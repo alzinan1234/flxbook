@@ -24,7 +24,6 @@ import {
   FaLinkedinIn,
   FaFacebookF,
   FaPlay,
-  FaRegGem,
   FaShieldAlt,
   FaClock,
   FaLock,
@@ -37,7 +36,7 @@ import { GiHairStrands, GiFlowerPot } from 'react-icons/gi'
 
 export default function Home() {
   const heroRef = useRef<HTMLElement>(null)
-  const statsRef = useRef<HTMLDivElement>(null)
+  const statsBarRef = useRef<HTMLDivElement>(null) // renamed to avoid conflict
 
   // Smooth scroll function
   const scrollToSection = (id: string) => {
@@ -64,12 +63,31 @@ export default function Home() {
       gsap.from('.booking-card', { x: 40, opacity: 0, stagger: 0.15, duration: 0.7, delay: 1 })
     }, heroRef)
 
-    // Stats counter on scroll
+    // Stats counter for HERO stats (already present)
     ScrollTrigger.create({
-      trigger: statsRef.current,
+      trigger: '.hero-stats',
       start: 'top 80%',
       onEnter: () => {
-        document.querySelectorAll('.stat-number').forEach((el) => {
+        document.querySelectorAll('.hero-stats .stat-number').forEach((el) => {
+          const target = el.getAttribute('data-target')
+          if (target) {
+            gsap.to(el, {
+              innerHTML: target,
+              duration: 2,
+              snap: { innerHTML: 1 },
+              ease: 'power2.out',
+            })
+          }
+        })
+      },
+    })
+
+    // Stats counter for STATS BAR (new)
+    ScrollTrigger.create({
+      trigger: statsBarRef.current,
+      start: 'top 80%',
+      onEnter: () => {
+        document.querySelectorAll('.stat-number-bar').forEach((el) => {
           const target = el.getAttribute('data-target')
           if (target) {
             gsap.to(el, {
@@ -201,7 +219,7 @@ export default function Home() {
             </button>
           </div>
 
-          {/* Stats */}
+          {/* Hero Stats */}
           <div className="hero-stats grid grid-cols-2 md:grid-cols-4 gap-6 mt-12 pt-8 border-t border-white/5">
             {[
               { target: '500', label: 'Happy Customers', suffix: 'K+' },
@@ -248,18 +266,18 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ---- STATS BAR (scroll triggered) ---- */}
-      <div ref={statsRef} className="bg-[#12121A] border-y border-white/5 py-12 px-6 md:px-16">
+      {/* ---- STATS BAR (scroll triggered count-up) ---- */}
+      <div ref={statsBarRef} className="bg-[#12121A] border-y border-white/5 py-12 px-6 md:px-16">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           {[
-            { num: '500K+', label: 'Bookings Completed' },
-            { num: '12K+', label: 'Verified Professionals' },
-            { num: '50+', label: 'Service Categories' },
-            { num: '4.9★', label: 'Average Rating' },
+            { target: '500K+', label: 'Bookings Completed' },
+            { target: '12K+', label: 'Verified Professionals' },
+            { target: '50+', label: 'Service Categories' },
+            { target: '4.9★', label: 'Average Rating' },
           ].map((item, i) => (
             <div key={i} data-aos="fade-up" data-aos-delay={i * 50} className="border-r border-white/5 last:border-0">
-              <div className="font-syne text-4xl md:text-5xl font-extrabold bg-gradient-to-br from-[#00E5BE] to-[#00B5F5] bg-clip-text text-transparent">
-                {item.num}
+              <div className="stat-number-bar font-syne text-4xl md:text-5xl font-extrabold bg-gradient-to-br from-[#00E5BE] to-[#00B5F5] bg-clip-text text-transparent" data-target={item.target}>
+                0
               </div>
               <div className="text-sm text-[#8A8A9A] mt-2">{item.label}</div>
             </div>
