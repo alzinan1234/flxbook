@@ -153,7 +153,7 @@ export default function Home() {
       ease: 'sine.inOut',
     })
 
-    return () => {
+    return () => {             
       ctx.revert()
       ScrollTrigger.getAll().forEach((t) => t.kill())
     }
@@ -428,7 +428,7 @@ export default function Home() {
               <div className="flex text-yellow-400 text-lg mb-2">
                 {Array.from({ length: t.stars }).map((_, idx) => <FaStar key={idx} />)}
               </div>
-              <p className="text-sm text-[#8A8A9A] italic leading-relaxed">"{t.text}"</p>
+              <p className="text-sm text-[#8A8A9A] italic leading-relaxed">{t.text}</p>
               <div className="flex items-center gap-3 mt-4">
                 <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold ${
                   t.color === 'accent' ? 'bg-[#00E5BE]/20 text-[#00E5BE]' : t.color === 'accent2' ? 'bg-[#FF4D6D]/20 text-[#FF4D6D]' : 'bg-indigo-500/20 text-indigo-400'
@@ -444,6 +444,8 @@ export default function Home() {
           ))}
         </div>
       </section>
+    
+    
 
       {/* ---- CTA BANNER ---- */}
       <div className="mx-6 md:mx-16 mb-20 bg-gradient-to-br from-[#00E5BE]/20 to-[#00B5F5]/10 border border-[#00E5BE]/30 rounded-3xl p-12 text-center relative overflow-hidden" data-aos="zoom-in">
