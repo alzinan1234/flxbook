@@ -186,7 +186,7 @@ export default function Home() {
           Get Started <FaArrowRight className="inline ml-1 text-xs" />
         </button>
       </nav>
-
+            
       {/* ---- HERO ---- */}
       <section id="home" ref={heroRef} className="relative min-h-screen flex items-center px-6 md:px-16 pt-32 pb-16 overflow-hidden">
         {/* Background grid */}
@@ -198,6 +198,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-r from-[#00E5BE]/5 to-transparent opacity-30"></div>
 
         <div className="relative z-10 max-w-3xl">
+          
           <div className="hero-badge inline-flex items-center gap-2 bg-[#00E5BE]/10 border border-[#00E5BE]/25 text-[#00E5BE] rounded-full px-4 py-1.5 text-xs font-medium uppercase tracking-wider mb-8">
             <span className="w-1.5 h-1.5 bg-[#00E5BE] rounded-full animate-pulse"></span>
             Now Available in Your City
