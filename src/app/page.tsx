@@ -188,6 +188,7 @@ export default function Home() {
       </nav>
         
       {/* ---- HERO ---- */}
+     
       <section id="home" ref={heroRef} className="relative min-h-screen flex items-center px-6 md:px-16 pt-32 pb-16 overflow-hidden">
         {/* Background grid */}
         <div className="absolute inset-0" style={{
