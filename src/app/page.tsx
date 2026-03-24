@@ -444,8 +444,7 @@ export default function Home() {
           ))}
         </div>
       </section>
-    
-    
+  
 
       {/* ---- CTA BANNER ---- */}
       <div className="mx-6 md:mx-16 mb-20 bg-gradient-to-br from-[#00E5BE]/20 to-[#00B5F5]/10 border border-[#00E5BE]/30 rounded-3xl p-12 text-center relative overflow-hidden" data-aos="zoom-in">
