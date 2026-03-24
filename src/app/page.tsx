@@ -190,7 +190,7 @@ export default function Home() {
       {/* ---- HERO ---- */}
      
       <section id="home" ref={heroRef} className="relative min-h-screen flex items-center px-6 md:px-16 pt-32 pb-16 overflow-hidden">
-        {/* Background grid */}
+       {/* background grid  */}
         <div className="absolute inset-0" style={{
           backgroundImage: 'linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px)',
           backgroundSize: '60px 60px',
